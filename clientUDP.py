@@ -4,7 +4,7 @@ import socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
  
 # Enviamos un mensaje al servidor
-server_address = ('192.168.1.x', 5000)  # Cambia '192.168.1.x' por la IP local del servidor
+server_address = ('locaLhost', 5000)  # Cambia '192.168.1.x' por la IP local del servidor
 message = 'Mensaje desde el cliente'
 sock.sendto(message.encode(), server_address)
  
