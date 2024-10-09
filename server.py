@@ -1,10 +1,17 @@
+from dotenv import load_dotenv
 import socket
+import os
 
+load_dotenv()
+
+HOST = os.getenv("HOST")
 # Creamos un socket UDP
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
+print(HOST)
+
 # Enlazamos el socket a la IP de la red local y puerto
-server_address = ('localhost', 5000)  # Cambia '192.168.1.x' por la IP local del servidor
+server_address = (HOST, 5000)  # Cambia '192.168.1.x' por la IP local del servidor
 sock.bind(server_address)
 
 # Escuchamos las peticiones entrantes
