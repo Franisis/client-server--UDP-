@@ -17,10 +17,11 @@ sock.sendto(message.encode(), server_address)
 print('Esperando respuesta del servidor...')
 try:
     data, address = sock.recvfrom(4096)
+    print('Recibido {} bytes de la dirección {}'.format(len(data), address))
+    print(data.decode())
 except:
     print("??????")
-print('Recibido {} bytes de la dirección {}'.format(len(data), address))
-print(data.decode())
+
  
 # Cerramos el socket
 sock.close()
