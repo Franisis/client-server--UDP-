@@ -1,10 +1,15 @@
+from dotenv import load_dotenv
 import socket
- 
+import os
+
+load_dotenv()
+
+
 # Creamos un socket UDP
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
- 
+HOST = os.getenv("HOST")
 # Enviamos un mensaje al servidor
-server_address = ('locaLhost', 5000)  # Cambia '192.168.1.x' por la IP local del servidor
+server_address = (HOST, 5000)  # Cambia '192.168.1.x' por la IP local del servidor
 message = 'Mensaje desde el cliente'
 sock.sendto(message.encode(), server_address)
  
