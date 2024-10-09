@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import socket
 import os
+import time
 
 load_dotenv()
 
@@ -14,13 +15,17 @@ message = 'Mensaje desde el cliente'
 sock.sendto(message.encode(), server_address)
  
 # Esperamos la respuesta del servidor
-print('Esperando respuesta del servidor...')
-try:
-    data, address = sock.recvfrom(4096)
-    print('Recibido {} bytes de la dirección {}'.format(len(data), address))
-    print(data.decode())
-except:
-    print("??????")
+
+while True:
+    print('Esperando respuesta del servidor...')
+    try:
+        data, address = sock.recvfrom(4096)
+        print('Recibido {} bytes de la dirección {}'.format(len(data), address))
+        print(data.decode())
+    except:
+        print("??????")
+    print('Comienza a esperar 60 segundos antes de enviar el siguiente mensaje')
+    time.sleep(5) #duerme 60 segundos
 
  
 # Cerramos el socket
