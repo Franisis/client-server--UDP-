@@ -15,7 +15,10 @@ sock.sendto(message.encode(), server_address)
  
 # Esperamos la respuesta del servidor
 print('Esperando respuesta del servidor...')
-data, address = sock.recvfrom(4096)
+try:
+    data, address = sock.recvfrom(4096)
+except:
+    print("??????")
 print('Recibido {} bytes de la dirección {}'.format(len(data), address))
 print(data.decode())
  
